@@ -1,6 +1,6 @@
 # VPC outputs:
 
-variable "vpc-output" {
+output "vpc-output" {
     value = module.vpc
 }
 

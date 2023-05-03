@@ -29,7 +29,7 @@ resource "aws_ecs_task_definition" "app_task" {
     "cpu": 256
   ]
   EOF
-  requires_compatibilities = [ "FARGATE" ]
+  requires_compatibilities = "FARGATE"
   network_mode = "awsvpc"
   memory = 512
   cpu = 256
