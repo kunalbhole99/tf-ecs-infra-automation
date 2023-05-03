@@ -23,8 +23,8 @@ jobs:
       - name: configure aws credentials         # get the credentials from aws using assume role
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::424736085230:role/GitHubAction-AssumeRoleWithAction
-          role-session-name: github
+          role-to-assume: arn:aws:iam::424736085230:role/Github
+          role-session-name: Github
           aws-region: ${{ env.AWS_REGION }}
 
       - name: apply terraform        # Apply the terraform code present in the repository
