@@ -38,6 +38,6 @@ jobs:
           ECR_REGISTRY: ${{ steps.Login-ECR.outputs.registry}}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
       - name: apply terraform        # Apply the terraform code present in the repository
-        run: terraform destroy --auto-approve
+        run: terraform init
         working-directory: tfproject
         
