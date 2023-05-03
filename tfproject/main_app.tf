@@ -19,9 +19,9 @@ resource "aws_ecs_task_definition" "app_task" {
     "name": "app",
     "image": "${aws_ecr_repository.dockerrepo.repository_url}:${var.image_tag}",
     "essential": true,
-    "portMappings":[
+    "portMappings": [
       {
-        "containerPort": 80
+        "containerPort": 80, 
         "hostPort": 80
       }
     ],
