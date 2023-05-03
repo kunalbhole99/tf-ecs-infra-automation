@@ -1,4 +1,4 @@
-name: tf-ecs-automation
+name: tf-ecs-automationn
 on:
   push:
     branches:
