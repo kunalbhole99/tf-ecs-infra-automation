@@ -28,6 +28,6 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: apply terraform        # Apply the terraform code present in the repository
-        run: terraform init && terraform apply --auto-approve
+        run: terraform destroy --auto-approve
         working-directory: tfproject
         
