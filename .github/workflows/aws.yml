@@ -34,6 +34,10 @@ jobs:
           role-session-name: Github
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: apply terraform        # Apply the terraform code present in the repository
+        run: terraform init && terraform apply --auto-approve
+        working-directory: tfproject
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -47,10 +51,6 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app/       
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
-      - name: apply terraform        # Apply the terraform code present in the repository
-        run: terraform init && terraform apply --auto-approve
-        working-directory: tfproject
 
       - name: export task definition
         id: export-td
