@@ -43,8 +43,8 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.Login-ECR.outputs.registry}}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
-          run: |
-            docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app/       # app folder to store the docker file of app
+          run: |              # app folder to store the docker file of app
+            docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app/       
             docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
             echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 

@@ -5,11 +5,11 @@ terraform {
       version = "4.65.0"
     }
   }
-  
+
   backend "s3" {
     bucket = "my-terraform-backend-statefile"
     region = "ap-south-1"
-    key = "tf-ecs-infra-automation/terraform.tfstate"
+    key    = "tf-ecs-infra-automation/terraform.tfstate"
   }
 }
 
