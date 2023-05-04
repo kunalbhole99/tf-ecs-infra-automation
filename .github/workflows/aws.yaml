@@ -35,13 +35,13 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
-        id: Login-ECR
+        id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: build, tag and push the docker image to amazon ecr
         id: build-image
         env:
-          ECR_REGISTRY: ${{ steps.Login-ECR.outputs.registry}}
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
           run: |              # app folder to store the docker file of app
             docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./app/       
@@ -66,7 +66,7 @@ jobs:
           ls
 
       - name: update the image in the task definition         # update the image in the task definition
-        id: task-definition
+        id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition/@v1
         with:
           task-definition: ${{ env.TASK_DEFINITION }}
